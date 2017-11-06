@@ -57,5 +57,6 @@ public final class Slox {
     
     static func report(line: Int, column: String, message: String) {
         print("[line \(line)] Error \(column) : \(message)")
+        hadError = true
     }
 }
