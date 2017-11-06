@@ -7,7 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		AE8E032A1FA9C2DA00A977C2 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE8E03291FA9C2DA00A977C2 /* main.swift */; };
+		AE7FD3EA1FAFEB8E00A92154 /* Token.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE7FD3E91FAFEB8E00A92154 /* Token.swift */; };
+		AE7FD3EC1FAFEC4500A92154 /* TokenType.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE7FD3EB1FAFEC4500A92154 /* TokenType.swift */; };
+		AE8E03331FA9DF1D00A977C2 /* Slox.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE8E03321FA9DF1D00A977C2 /* Slox.swift */; };
+		AE8E03351FA9E4B300A977C2 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE8E03341FA9E4B300A977C2 /* main.swift */; };
+		AEFBCAFD1FAFECD6008763E5 /* Scanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEFBCAFC1FAFECD6008763E5 /* Scanner.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -23,9 +27,13 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		AE7FD3E91FAFEB8E00A92154 /* Token.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Token.swift; sourceTree = "<group>"; };
+		AE7FD3EB1FAFEC4500A92154 /* TokenType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenType.swift; sourceTree = "<group>"; };
 		AE8E03261FA9C2DA00A977C2 /* slox */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = slox; sourceTree = BUILT_PRODUCTS_DIR; };
-		AE8E03291FA9C2DA00A977C2 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		AE8E03301FA9C36B00A977C2 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		AE8E03321FA9DF1D00A977C2 /* Slox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Slox.swift; sourceTree = "<group>"; };
+		AE8E03341FA9E4B300A977C2 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		AEFBCAFC1FAFECD6008763E5 /* Scanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scanner.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,7 +67,11 @@
 		AE8E03281FA9C2DA00A977C2 /* slox */ = {
 			isa = PBXGroup;
 			children = (
-				AE8E03291FA9C2DA00A977C2 /* main.swift */,
+				AE8E03321FA9DF1D00A977C2 /* Slox.swift */,
+				AE8E03341FA9E4B300A977C2 /* main.swift */,
+				AE7FD3E91FAFEB8E00A92154 /* Token.swift */,
+				AE7FD3EB1FAFEC4500A92154 /* TokenType.swift */,
+				AEFBCAFC1FAFECD6008763E5 /* Scanner.swift */,
 			);
 			path = slox;
 			sourceTree = "<group>";
@@ -96,6 +108,7 @@
 				TargetAttributes = {
 					AE8E03251FA9C2DA00A977C2 = {
 						CreatedOnToolsVersion = 9.1;
+						LastSwiftMigration = 0910;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -122,7 +135,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AE8E032A1FA9C2DA00A977C2 /* main.swift in Sources */,
+				AE7FD3EA1FAFEB8E00A92154 /* Token.swift in Sources */,
+				AE7FD3EC1FAFEC4500A92154 /* TokenType.swift in Sources */,
+				AE8E03351FA9E4B300A977C2 /* main.swift in Sources */,
+				AEFBCAFD1FAFECD6008763E5 /* Scanner.swift in Sources */,
+				AE8E03331FA9DF1D00A977C2 /* Slox.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -238,9 +255,13 @@
 		AE8E032E1FA9C2DA00A977C2 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 5WFUXN96S7;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
@@ -248,9 +269,12 @@
 		AE8E032F1FA9C2DA00A977C2 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 5WFUXN96S7;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_VERSION = 4.0;
 			};
 			name = Release;
