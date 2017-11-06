@@ -74,18 +74,7 @@ public class Scanner {
         case "=": addToken(match("=") ? .EQUAL_EQUAL : .EQUAL)
         case "<": addToken(match("=") ? .LESS_EQUAL : .LESS)
         case ">": addToken(match("=") ? .GREATER_EQUAL : .GREATER)
-        case "/":
-            if match("*") {
-                while peek() != "*" && peekNext() != "/" && !isAtEnd() { _ = advance() }
-                for _ in 0...2 {
-                    _ = advance()
-                }
-            }
-            else if match("/") {
-                while peek() != "\n" && !isAtEnd() { _ = advance() }
-            } else {
-                addToken(TokenType.SLASH)
-            }
+        case "/": comment()
         case " ", "\r", "\t": break
         case "\n": line += 1
         case "\"": string()
@@ -97,6 +86,20 @@ public class Scanner {
             } else {
                 Slox.error(line: line, message: "Unexpected character")
             }
+        }
+    }
+    
+    private func comment() {
+        if match("*") {
+            while peek() != "*" && peekNext() != "/" && !isAtEnd() { _ = advance() }
+            for _ in 0...2 {
+                _ = advance()
+            }
+        }
+        else if match("/") {
+            while peek() != "\n" && !isAtEnd() { _ = advance() }
+        } else {
+            addToken(TokenType.SLASH)
         }
     }
     
