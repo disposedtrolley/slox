@@ -75,7 +75,13 @@ public class Scanner {
         case "<": addToken(match("=") ? .LESS_EQUAL : .LESS)
         case ">": addToken(match("=") ? .GREATER_EQUAL : .GREATER)
         case "/":
-            if match("/") {
+            if match("*") {
+                while peek() != "*" && peekNext() != "/" && !isAtEnd() { _ = advance() }
+                for _ in 0...2 {
+                    _ = advance()
+                }
+            }
+            else if match("/") {
                 while peek() != "\n" && !isAtEnd() { _ = advance() }
             } else {
                 addToken(TokenType.SLASH)
