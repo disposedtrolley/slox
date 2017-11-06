@@ -12,6 +12,9 @@ public final class Slox {
     
     static var hadError = false
     
+    /**
+     Runs the Slox interpreter on a given file.
+    */
     static func runFile(path: String) throws {
         let url = URL(fileURLWithPath: path)
         let string = try String(contentsOf: url)
@@ -21,6 +24,9 @@ public final class Slox {
         if hadError { exit(65) }
     }
     
+    /**
+     Runs the Slox interpreter as a REPL.
+    */
     static func runPrompt() {
         while true {
             print("> ")
@@ -30,7 +36,10 @@ public final class Slox {
         }
     }
     
-    static func run(source: String) {
+    /**
+     Initiates the Slox interpreter with a given string.
+    */
+    private static func run(source: String) {
         let scanner: Scanner = Scanner(source: source)
         let tokens: Array<Token> = scanner.scanTokens()
         
@@ -39,11 +48,14 @@ public final class Slox {
         }
     }
     
+    /**
+     Utility method to log errors.
+    */
     static func error(line: Int, message: String) {
-        Slox.report(line: line, where: "", message: message)
+        Slox.report(line: line, column: "", message: message)
     }
     
-    static func report(line: Int, where: String, message: String) {
-        print("[line \(line)] Error  : \(message)")
+    static func report(line: Int, column: String, message: String) {
+        print("[line \(line)] Error \(column) : \(message)")
     }
 }
