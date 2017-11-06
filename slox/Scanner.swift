@@ -227,6 +227,11 @@ public class Scanner {
         return source[index]
     }
     
+    /**
+     Creates a new token with a literal value, e.g. a string or number.
+     - Parameter type: the type of token to create
+     - Parameter literal: the value of the token
+    */
     private func addToken(type: TokenType, literal: Any) {
         let start = source.index(source.startIndex, offsetBy: self.start)
         let current = source.index(source.startIndex, offsetBy: self.current)
@@ -234,6 +239,10 @@ public class Scanner {
         tokens.append(Token(type: type, lexeme: text, literal: literal, line: line))
     }
     
+    /**
+     Creates a new token with a specified TokenType.
+     - Parameter type: the type of token to create
+    */
     private func addToken(_ type: TokenType) {
         addToken(type: type, literal: [])
     }
