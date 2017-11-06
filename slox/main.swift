@@ -8,4 +8,13 @@
 
 import Foundation
 
-try Slox.main()
+let argCount = CommandLine.argc     // retrieve the count of arguments
+let args = CommandLine.arguments    // retrieve the arguments themselves
+
+if argCount > 2 {
+    print("Usage: slox [script]")
+} else if argCount == 2 {
+    try Slox.runFile(path: args[1])
+} else {
+    Slox.runPrompt()
+}

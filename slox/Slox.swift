@@ -12,21 +12,7 @@ public final class Slox {
     
     static var hadError = false
     
-    static func main() throws {
-        let argCount = CommandLine.argc     // retrieve the count of arguments
-        let args = CommandLine.arguments    // retrieve the arguments themselves
-        
-        // first argument in Swift is always the executable path
-        if argCount > 2 {
-            print("Usage: slox [script]")
-        } else if argCount == 2 {
-            try Slox.runFile(path: args[1])
-        } else {
-            Slox.runPrompt()
-        }
-    }
-    
-    private static func runFile(path: String) throws {
+    static func runFile(path: String) throws {
         let url = URL(fileURLWithPath: path)
         let string = try String(contentsOf: url)
         run(source: string)
@@ -35,7 +21,7 @@ public final class Slox {
         if hadError { exit(65) }
     }
     
-    private static func runPrompt() {
+    static func runPrompt() {
         while true {
             print("> ")
             guard let input = readLine() else { continue }
@@ -44,7 +30,7 @@ public final class Slox {
         }
     }
     
-    private static func run(source: String) {
+    static func run(source: String) {
         let scanner: Scanner = Scanner(source: source)
         let tokens: Array<Token> = scanner.scanTokens()
         
